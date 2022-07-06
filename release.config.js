@@ -1,6 +1,6 @@
 module.exports = {
   branches: "main",
-  repositoryUrl: "https://github.com/paulAlexSerban/tpl--traefik-server",
+  repositoryUrl: "https://github.com/paulAlexSerban/tpl--traefik-proxy",
   plugins: [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",

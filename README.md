@@ -8,11 +8,12 @@
 - `npm run install:projects` - install all projects devDependencies
 - `npm run start:compose:all` - start docker compose containers
 - `npm run stop:compose:all` - stop docker compose containers
-- `npm run test:container:treafik` - test all docker containers with curl for response
+- `npm run test:container:treafik-proxy` - test all docker containers with curl for response
 
 ## Local Development URLs
 
-- [local instance](http://localhost:80)
+- [traefik dashboard](http://localhost:8080/dashboard)
+- [whiomi service](https://whoami-service-tpl-traefik-proxy.localhost/)
 
 ## Resources
 

@@ -1,0 +1,64 @@
+name: CI Develop Traefik Docker
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+  workflow_call:
+
+jobs:
+  test-docker:
+    name: Test Docker Traefik
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repository
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Verify if there were changes in ./docker or *.Dockerfile
+      - name: "🔍  Verify Changed Traefik files ./docker or *.Dockerfile"
+        uses: tj-actions/changed-files@v23.1
+        id: changed-traefik-proxy-docker
+        with:
+          files: |
+              docker/*.traefik-proxy.yml
+              **/traefik-entrypoints.yml
+
+      # Cache node_modules to speed up things if there were changes in ./docker or *.Dockerfile
+      - name: "Cache node_modules"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Install NodeJS & npm if there were changes in ./docker or *.Dockerfile
+      - name: "🔧  Setup NodeJS 14.19.1"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.19.1
+
+      - name: "🔧  Install npm@latest"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        run: npm i -g npm@latest
+
+      # Start Docker containers if there are changes detected
+      - name: "🐳  Start Traefik Docker Containers"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        run: npm run start:compose:traefik
+  
+      - name: "🧪  Check running containers"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        run: docker ps -a
+  
+      - name: "🧪 Test Traefik container"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        run: npm run test:container:traefik

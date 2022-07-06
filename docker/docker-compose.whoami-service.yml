@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  # ---------------------------------------------------------------------
+  # | Whoami-Service                                                     |
+  # ---------------------------------------------------------------------
+  whoami-service:
+    image: traefik/whoami
+    container_name: whoami-service
+    depends_on:
+      - traefik-proxy
+    labels:
+      - traefik.enable=true
+      # Routers
+      - traefik.http.routers.whoami-service.entrypoints=web
+      - traefik.http.routers.whoami-service.entrypoints=websecure
+      - traefik.http.routers.whoami-service.tls.certresolver=myresolver
+      - traefik.http.routers.whoami-service.tls=true
+      - traefik.http.routers.whoami-service.middlewares=test-compress
+      # Services
+      - traefik.http.services.whoami-service.loadbalancer.server.port=80
+      # Middlewares
+      # Compress Middleware - Enable gzip compression
+      - traefik.http.middlewares.test-compress.compress=true
+      # Redirect Scheme HTTP -> HTTPS
+      - traefik.http.middlewares.test-redirectscheme.redirectscheme.scheme=https
+      - traefik.http.middlewares.test-redirectscheme.redirectscheme.permanent=true
+      - traefik.http.middlewares.test-redirectscheme.redirectscheme.port=443
