@@ -1,24 +1,13 @@
-name: CI Release Workflow
+name: Release
 on:
   push:
-    branches: [main]
+    branches: 
+      - main
 
 jobs:
-  lint-yaml:
-    name: Lint
-    uses: paulAlexSerban/tpl--traefik-proxy/.github/workflows/ci-lint-yaml.yml@develop
-
-  test-docker:
-    name: Test
-    uses: paulAlexSerban/tpl--traefik-proxy/.github/workflows/ci-dev-docker.yml@develop
-
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs:
-      - lint-yaml
-      - test-docker
-
     steps:
       # Checkout repository
       - name: "☁️ checkout repository"

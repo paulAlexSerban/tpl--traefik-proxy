@@ -1,9 +1,10 @@
-name: CI Docker
+name: Docker
 on:
   push:
     branches-ignore:
       - release
       - main
+      - develop
   workflow_call:
 
 jobs:
