@@ -16,4 +16,3 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro # So that Traefik can listen to the Docker events
       - ./letsencrypt:/letsencrypt # Copies the Let's Encrypt certificate locally for ease of backing up
       - ../backend/traefik-proxy/traefik-entrypoints.yml:/etc/traefik/traefik.yml # Mounts the Traefik static configuration inside the Traefik container
-  

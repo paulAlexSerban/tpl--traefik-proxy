@@ -1,6 +1,4 @@
 ---
-
-# API and dashboard configuration
 api:
 
   # Dashboard
@@ -9,26 +7,19 @@ api:
   dashboard: true
   insecure: true
 
-# Docker configuration backend
-
 providers:
   docker:
     exposedByDefault: false
     defaultRule: "Host(`{{ trimPrefix `/` .Name }}.localhost`)"
 
-# Traefik Logging
 log:
   level: INFO
-
-# Entrypoint
 
 entryPoints:
   web:
     address: ":80"
   websecure:
     address: ":443"
-
-# Challenge HTTP
 
 certificatesResolvers:
   myresolver:

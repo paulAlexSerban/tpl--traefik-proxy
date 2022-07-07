@@ -5,7 +5,8 @@ on:
   workflow_call:
 
 jobs:
-  lintAllTheThings:
+  lint-yaml:
+    name: Lint Yaml
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ Checkout repository"
