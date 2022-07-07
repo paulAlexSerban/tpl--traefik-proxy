@@ -18,8 +18,8 @@ jobs:
         id: changed-yaml-files
         with:
           files: |
-              docker/*.traefik-proxy.yml
-              **/traefik-entrypoints.yml
+              *.yml
+              **/*.yml
       - name: "🔍 Lint"
         if: steps.changed-yaml-files.outputs.any_changed == 'true'
         uses: ibiqlik/action-yamllint@v3
