@@ -6,7 +6,9 @@ on:
       - edited
       - synchronize
       - reopened
-    branches: [develop]
+    branches-ignore:
+      - release
+      - main
   workflow_call:
 
 jobs:
