@@ -1,0 +1,62 @@
+name: CI Docker
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+    branches-ignore:
+      - release
+      - main
+  workflow_call:
+
+jobs:
+  lint-yaml:
+    name: Lint
+    uses: paulAlexSerban/tpl--traefik-proxy/.github/workflows/ci-lint-yaml.yml@develop
+  test-docker:
+    name: Test Docker
+    runs-on: ubuntu-latest
+    needs:
+      - lint-yaml
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "🔍  Verify Changed Traefik files ./docker or *.Dockerfile"
+        uses: tj-actions/changed-files@v23.1
+        id: changed-traefik-proxy-docker
+        with:
+          files: |
+              docker/*.traefik-proxy.yml
+              **/traefik-entrypoints.yml
+
+      - name: "🔍  Verify Changed Whoami Service files ./docker or *.Dockerfile"
+        uses: tj-actions/changed-files@v23.1
+        id: changed-whoami-service-docker
+        with:
+          files: |
+              docker/*.whoami-service.yml
+
+      - name: "🐳  Start Traefik Docker Containers"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        run: npm run start:compose:traefik-proxy
+
+      - name: "🐳  Start Whoami Service Containers"
+        if: steps.changed-whoami-service-docker.outputs.any_changed == 'true'
+        run: npm run start:compose:whoami-service
+  
+      - name: "🧪  Check running containers"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        run: docker ps -a
+  
+      - name: "🧪 Test Traefik container"
+        if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
+        run: npm run test:container:traefik-proxy
+
+      - name: "🧪 Test Traefik container"
+        if: steps.changed-whoami-service-docker.outputs.any_changed == 'true'
+        run: npm run test:container:traefik-proxy

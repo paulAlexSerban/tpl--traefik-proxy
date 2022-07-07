@@ -1,3 +1,4 @@
+---
 version: "3.7"
 services:
   # ---------------------------------------------------------------------
@@ -12,7 +13,9 @@ services:
       - 443:443
       - 8080:8080 # The Web UI port http://0.0.0.0:8080 (enabled by --api.insecure=true)
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro # So that Traefik can listen to the Docker events
-      - ./letsencrypt:/letsencrypt # Copies the Let's Encrypt certificate locally for ease of backing up
-      - ../backend/traefik-proxy/traefik-entrypoints.yml:/etc/traefik/traefik.yml # Mounts the Traefik static configuration inside the Traefik container
-  
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock:ro 
+      # Copies the Let's Encrypt certificate locally for ease of backing up
+      - ./letsencrypt:/letsencrypt 
+      # Mounts the Traefik static configuration inside the Traefik container
+      - ../backend/traefik-proxy/traefik-entrypoints.yml:/etc/traefik/traefik.yml 
