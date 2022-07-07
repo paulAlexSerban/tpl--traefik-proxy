@@ -14,6 +14,7 @@ on:
 jobs:
   lint-yaml:
     name: Lint
+    if: github.event.pull_request
     uses: paulAlexSerban/tpl--traefik-proxy/.github/workflows/ci-lint-yaml.yml@develop
   test-docker:
     name: Test Docker
