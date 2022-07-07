@@ -3,6 +3,7 @@ name: Lint YAML
 on:
   push:
     branches-ignore:
+      - develop
       - release
       - main
   workflow_call:
