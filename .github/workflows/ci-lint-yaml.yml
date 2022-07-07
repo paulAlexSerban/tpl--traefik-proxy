@@ -11,6 +11,7 @@ on:
 jobs:
   lint-yaml:
     name: Lint Yaml
+    if: github.event.push
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ Checkout repository"
