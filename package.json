@@ -1,0 +1,58 @@
+{
+  "name": "tpl--traefik-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "🧪 🧪 🧪 🧪": "TEST",
+    "test": "echo 'Error: no test specified'",
+    "test:container:traefik-proxy": "bash package-scripts.bash testCurlTraefikProxyContainer",
+    "test:container:whoami-service": "bash package-scripts.bash testCurlWhoamiServiceContainer",
+    "📦 📦 📦 📦": "INSTALL DEPENDENCIES",
+    "install:ci": "npm ci --omit=dev --ignore-scripts",
+    "install:root": "npm install",
+    "install:all": "bash package-scripts.bash installAll",
+    "prepare": "husky install",
+    "🐳  🟢  🐳  🟢 ": "START - Docker Compose",
+    "start:compose:traefik-proxy": "bash package-scripts.bash startComposeTraefikProxy",
+    "start:compose:whoami-service": "bash package-scripts.bash startComposeWhiamiService",
+    "🛑  🐳  🛑  🐳": "STOP - Docker Compose",
+    "stop:compose:all": "bash package-scripts.bash stopComposeAll",
+    "stop:compose:traefik-proxy": "bash package-scripts.bash stopComposeTraefikProxy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulAlexSerban/tpl--traefik-proxy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulAlexSerban/tpl--traefik-proxy/issues"
+  },
+  "homepage": "https://github.com/paulAlexSerban/tpl--traefik-proxy#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.4"
+  },
+  "dependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.4",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "semantic-release": "^19.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
+  }
+}
