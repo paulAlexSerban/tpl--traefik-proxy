@@ -1,0 +1,29 @@
+---
+api:
+
+  # Dashboard
+
+  debug: true
+  dashboard: true
+  insecure: true
+
+providers:
+  docker:
+    exposedByDefault: false
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.localhost`)"
+
+log:
+  level: INFO
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: serban.paul.91@gmail.com
+      storage: acme.json
+      tlsChallenge: true
