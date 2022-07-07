@@ -20,12 +20,12 @@ function startComposeWhiamiService() {
 
 function testCurlTraefikProxyContainer() {
   echo "🧪  TEST Traefik Proxy container"
-  bash ./test/check-docker-container.bash traefik-proxy
+  bash ./docker/test/check-docker-container.bash traefik-proxy
 }
 
 function testCurlWhoamiServiceContainer() {
   echo "🧪  TEST Whoami Service container"
-  bash ./test/check-docker-container.bash whoami-service
+  bash ./docker/test/check-docker-container.bash whoami-service
 }
 
 # STOP Docker Compose Services

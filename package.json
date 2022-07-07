@@ -6,8 +6,8 @@
   "scripts": {
     "🧪 🧪 🧪 🧪": "TEST",
     "test": "echo 'Error: no test specified'",
-    "test:container:traefik": "bash package-scripts.bash testCurlTraefikProxyContainer",
-    "test:container:whoami": "bash package-scripts.bash testCurlWhoamiServiceContainer",
+    "test:container:traefik-proxy": "bash package-scripts.bash testCurlTraefikProxyContainer",
+    "test:container:whoami-service": "bash package-scripts.bash testCurlWhoamiServiceContainer",
     "📦 📦 📦 📦": "INSTALL DEPENDENCIES",
     "install:ci": "npm ci --omit=dev --ignore-scripts",
     "install:root": "npm install",
