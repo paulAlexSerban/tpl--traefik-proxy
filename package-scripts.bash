@@ -6,10 +6,11 @@ function startComposeTraefikProxy() {
   echo "🐳  🟢  START Traefik Proxy conatiner "
   docker-compose --env-file config.env \
     --file docker/docker-compose.traefik-proxy.yml \
+    --file docker/docker-compose.error-middleware.yml \
     up --detach --build
 }
 
-function startComposeWhiamiService() {
+function startComposeWhoamiService() {
   echo "🐳  🟢  START Whoami Service conatiner "
   docker-compose --env-file config.env \
     --file docker/docker-compose.traefik-proxy.yml \
@@ -45,6 +46,14 @@ function stopComposeWhiamiService() {
 }
 
 function stopComposeAll() {
+  echo " 🛑  🐳  STOP all docker containers"
+  docker compose --env-file config.env \
+    --file docker/docker-compose.traefik-proxy.yml \
+    --file docker/docker-compose.whoami-service.yml \
+    down
+}
+
+function stopComposeAllClean() {
   echo " 🛑  🐳  STOP all docker containers"
   docker compose --env-file config.env \
     --file docker/docker-compose.traefik-proxy.yml \
