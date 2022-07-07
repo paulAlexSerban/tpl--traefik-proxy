@@ -15,7 +15,7 @@
     "prepare": "husky install",
     "🐳  🟢  🐳  🟢 ": "START - Docker Compose",
     "start:compose:traefik-proxy": "bash package-scripts.bash startComposeTraefikProxy",
-    "start:compose:whoami-service": "bash package-scripts.bash startComposeWhiamiService",
+    "start:compose:whoami-service": "bash package-scripts.bash startComposeWhoamiService",
     "🛑  🐳  🛑  🐳": "STOP - Docker Compose",
     "stop:compose:all": "bash package-scripts.bash stopComposeAll",
     "stop:compose:traefik-proxy": "bash package-scripts.bash stopComposeTraefikProxy"
