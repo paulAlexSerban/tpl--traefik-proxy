@@ -1,14 +1,16 @@
 ---
+
 # API and dashboard configuration
 api:
 
   # Dashboard
-  #
+
   debug: true
   dashboard: true
   insecure: true
 
 # Docker configuration backend
+
 providers:
   docker:
     exposedByDefault: false
@@ -19,6 +21,7 @@ log:
   level: INFO
 
 # Entrypoint
+
 entryPoints:
   web:
     address: ":80"
@@ -26,10 +29,10 @@ entryPoints:
     address: ":443"
 
 # Challenge HTTP
+
 certificatesResolvers:
   myresolver:
     acme:
       email: serban.paul.91@gmail.com
       storage: acme.json
       tlsChallenge: true
-
