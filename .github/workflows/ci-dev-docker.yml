@@ -1,26 +1,15 @@
 name: CI Docker
 on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
+  push:
     branches-ignore:
       - release
       - main
   workflow_call:
 
 jobs:
-  lint-yaml:
-    name: Lint
-    if: github.event.pull_request
-    uses: paulAlexSerban/tpl--traefik-proxy/.github/workflows/ci-lint-yaml.yml@develop
   test-docker:
     name: Test Docker
     runs-on: ubuntu-latest
-    needs:
-      - lint-yaml
     steps:
       - name: "☁️ Checkout repository"
         uses: actions/checkout@v3

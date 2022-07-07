@@ -3,7 +3,6 @@ name: Lint YAML
 on:
   push:
     branches-ignore:
-      - develop
       - release
       - main
   workflow_call:
@@ -11,7 +10,6 @@ on:
 jobs:
   lint-yaml:
     name: Lint Yaml
-    if: github.event.push
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ Checkout repository"
