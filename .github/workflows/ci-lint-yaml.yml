@@ -1,3 +1,4 @@
+---
 name: Lint YAML
 on:
   push:
@@ -15,4 +16,3 @@ jobs:
         uses: ibiqlik/action-yamllint@v3
         with:
           file_or_dir: ./**/*.yml
-          
