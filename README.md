@@ -1,14 +1,14 @@
-# Traefik Server (flat-project-template)
+# Traefik Server
 
 ## About
 
-## Development Scripts
+## Commands
 
 - `npm run install:root` - install root dependencies
-- `npm run install:projects` - install all projects devDependencies
-- `npm run start:compose:all` - start docker compose containers
-- `npm run stop:compose:all` - stop docker compose containers
-- `npm run test:container:treafik-proxy` - test all docker containers with curl for response
+- `npm run install:projects` - install all projects
+- `bash scripts/docker-start-all.bash` - start docker ontainers
+- `bash scripts/docker-stop-all.bash` - stop all docker containers
+- `bash scripts/docker-stop-all-clean.bash` - stop all docker container and clean leftovers
 
 ## Local Development URLs
 
@@ -27,17 +27,3 @@
 - [js - wordpress](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/)
 - [js - geeks for geeks](https://www.geeksforgeeks.org/javascript-style-guide-and-coding-conventions/)
 - [php - php-fix](https://www.php-fig.org/psr/)
-
-## Inspiration
-
-- `npm run clean` - Remove `lib/` directory
-- `npm test` - Run tests with linting and coverage results.
-- `npm test:only` - Run tests without linting or coverage.
-- `npm test:watch` - You can even re-run tests on file changes!
-- `npm test:prod` - Run tests with minified code.
-- `npm run test:examples` - Test written examples on pure JS for better understanding module usage.
-- `npm run lint` - Run ESlint with airbnb-config
-- `npm run cover` - Get coverage report for your code.
-- `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
-- `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
-

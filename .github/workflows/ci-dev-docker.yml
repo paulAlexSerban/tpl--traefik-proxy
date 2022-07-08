@@ -34,11 +34,11 @@ jobs:
 
       - name: "🐳  Start Traefik Docker Containers"
         if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
-        run: npm run start:compose:traefik-proxy
+        run: bash scripts/docker-start-trafik-proxy.bash
 
       - name: "🐳  Start Whoami Service Containers"
         if: steps.changed-whoami-service-docker.outputs.any_changed == 'true'
-        run: npm run start:compose:whoami-service
+        run: bash scripts/docker-start-whoami-service.bash
   
       - name: "🧪  Check running containers"
         if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
@@ -46,8 +46,8 @@ jobs:
   
       - name: "🧪 Test Traefik container"
         if: steps.changed-traefik-proxy-docker.outputs.any_changed == 'true'
-        run: npm run test:container:traefik-proxy
+        run: bash scripts/docker-test-traefik-proxy.bash
 
       - name: "🧪 Test Traefik container"
         if: steps.changed-whoami-service-docker.outputs.any_changed == 'true'
-        run: npm run test:container:traefik-proxy
+        run: bash scripts/docker-test-traefik-proxy.bash

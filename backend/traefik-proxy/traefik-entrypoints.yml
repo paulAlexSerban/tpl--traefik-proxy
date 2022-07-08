@@ -13,7 +13,14 @@ providers:
     defaultRule: "Host(`{{ trimPrefix `/` .Name }}.localhost`)"
 
 log:
-  level: INFO
+  level: DEBUG
+
+accessLog:
+  filePath: "var/log/traefik/access.log"
+  format: json
+  filters:
+    retryAttempts: true
+    minDuration: "10ms"
 
 entryPoints:
   web:
