@@ -5,8 +5,8 @@
 ## Commands
 
 - `npm run install:root` - install root dependencies
-- `npm run install:projects` - install all projects
-- `bash scripts/docker-start-all.bash` - start docker ontainers
+- `bash scripts/docker-start-all.bash` - start all docker containers
+- `bash scripts/docker-start-trafik-proxy.bash` - start traefik container
 - `bash scripts/docker-stop-all.bash` - stop all docker containers
 - `bash scripts/docker-stop-all-clean.bash` - stop all docker container and clean leftovers
 
