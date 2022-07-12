@@ -15,9 +15,11 @@ services:
       retries: 3
       start_period: 5s
     ports:
-      - 80:80 # Exposes port 80 for incomming web requests
+      # Exposes port 80 for incomming web requests
+      - 80:80
       - 443:443
-      - 8080:8080 # The Web UI port http://0.0.0.0:8080 (enabled by --api.insecure=true)
+      # The Web UI port http://0.0.0.0:8080 (enabled by --api.insecure=true)
+      - 8080:8080
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock:ro 
