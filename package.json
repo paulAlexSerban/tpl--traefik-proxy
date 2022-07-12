@@ -4,21 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "🧪 🧪 🧪 🧪": "TEST",
     "test": "echo 'Error: no test specified'",
-    "test:container:traefik-proxy": "bash package-scripts.bash testCurlTraefikProxyContainer",
-    "test:container:whoami-service": "bash package-scripts.bash testCurlWhoamiServiceContainer",
-    "📦 📦 📦 📦": "INSTALL DEPENDENCIES",
     "install:ci": "npm ci --omit=dev --ignore-scripts",
     "install:root": "npm install",
-    "install:all": "bash package-scripts.bash installAll",
-    "prepare": "husky install",
-    "🐳  🟢  🐳  🟢 ": "START - Docker Compose",
-    "start:compose:traefik-proxy": "bash package-scripts.bash startComposeTraefikProxy",
-    "start:compose:whoami-service": "bash package-scripts.bash startComposeWhoamiService",
-    "🛑  🐳  🛑  🐳": "STOP - Docker Compose",
-    "stop:compose:all": "bash package-scripts.bash stopComposeAll",
-    "stop:compose:traefik-proxy": "bash package-scripts.bash stopComposeTraefikProxy"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
