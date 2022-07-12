@@ -19,29 +19,29 @@ cd $(dirname $0) # makes sure the folder containing the script will be the root 
 CONTAINER=$1
 
 if [ "x${CONTAINER}" == "x" ]; then
-  echo "3 - UNKNOWN" 
-  echo "Container ID or Friendly Name Required"
+  echo "🛑 3 - UNKNOWN" 
+  echo "🛑 Container ID or Friendly Name Required"
   exit 3
 fi
 
 if [ "x$(which docker)" == "x" ]; then
-  echo "3 UNKNOWN" 
-  echo "Missing docker binary"
+  echo "🛑 3 - UNKNOWN" 
+  echo "🛑 Missing docker binary"
   exit 3
 fi
 
 docker info > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "3 - UNKNOWN" 
-  echo "Unable to talk to the docker daemon"
+  echo "🛑 3 - UNKNOWN" 
+  echo "🛑 Unable to talk to the docker daemon"
   exit 3
 fi
 
 RUNNING=$(docker inspect --format="{{.State.Running}}" $CONTAINER 2> /dev/null)
 
 if [ $? -eq 1 ]; then
-  echo "3 - UNKNOWN"
-  echo "$CONTAINER does not exist."
+  echo "🛑 3 - UNKNOWN"
+  echo "🛑 $CONTAINER does not exist."
   exit 3
 fi
 
@@ -62,5 +62,7 @@ fi
 STARTED=$(docker inspect --format="{{.State.StartedAt}}" $CONTAINER)
 NETWORK=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" $CONTAINER)
 
-echo "0 - RUNNING OK"
-echo "$CONTAINER is running. -> IP: $NETWORK, StartedAt: $STARTED"
+echo "🟢 0 - RUNNING OK"
+echo "🟢 $CONTAINER is running."
+echo "🟢 -> IP: $NETWORK"
+echo "🟢 Started at: $STARTED"
