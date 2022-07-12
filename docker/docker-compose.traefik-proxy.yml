@@ -9,7 +9,7 @@ services:
     container_name: traefik-proxy
     restart: unless-stopped
     healthcheck:
-      test: ["CMD",  "traefik", "healthcheck"]
+      test: ["CMD", "traefik", "healthcheck"]
       interval: 10s
       timeout: 2s
       retries: 3
@@ -22,9 +22,9 @@ services:
       - 8080:8080
     volumes:
       # So that Traefik can listen to the Docker events
-      - /var/run/docker.sock:/var/run/docker.sock:ro 
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       # Copies the Let's Encrypt certificate locally for ease of backing up
-      - ./dist/letsencrypt:/letsencrypt 
+      - ./dist/letsencrypt:/letsencrypt
       # Mounts the Traefik static configuration inside the Traefik container
-      - ../backend/traefik-proxy/traefik-entrypoints.yml:/etc/traefik/traefik.yml 
+      - ../backend/traefik-proxy/traefik-entrypoints.yml:/etc/traefik/traefik.yml
       - ./dist/logs/access.log:/var/log/traefik/access.log
