@@ -1,4 +1,4 @@
-# Traefik Server
+# Traefik Proxy
 
 ## About
 
