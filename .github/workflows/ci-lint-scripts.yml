@@ -43,6 +43,7 @@ jobs:
           file_or_dir: ./**/*.yml
       
       - name: Lint Bash Script with ShellCheck
+        if: steps.changed-bash-files.outputs.any_changed == 'true'
         uses: azohra/shell-linter@latest
         with:
           path: |
