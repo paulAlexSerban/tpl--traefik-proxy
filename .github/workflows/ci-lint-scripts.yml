@@ -6,6 +6,13 @@ on:
       - release
       - main
       - develop
+    paths:
+    - ./*.yml
+    - ./**/*.yml
+    - ./*.bash
+    - ./*.sh
+    - ./**/*.bash
+    - ./**/*.sh
   workflow_call:
 
 jobs:
