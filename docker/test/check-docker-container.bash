@@ -1,5 +1,6 @@
 #!/bin/bash
-cd $(dirname $0) # makes sure the folder containing the script will be the root folder
+# makes sure the folder containing the script will be the root folder
+cd "$(dirname "$0")" || exit
 
 # Usage: ./check_docker_container.sh _container_id_
 #
@@ -18,13 +19,13 @@ cd $(dirname $0) # makes sure the folder containing the script will be the root 
 
 CONTAINER=$1
 
-if [ "x${CONTAINER}" == "x" ]; then
+if [ "${CONTAINER}" == "" ]; then
   echo "🛑 3 - UNKNOWN" 
   echo "🛑 Container ID or Friendly Name Required"
   exit 3
 fi
 
-if [ "x$(which docker)" == "x" ]; then
+if [ "$(which docker)" == "" ]; then
   echo "🛑 3 - UNKNOWN" 
   echo "🛑 Missing docker binary"
   exit 3
@@ -37,7 +38,7 @@ if [ $? -ne 0 ]; then
   exit 3
 fi
 
-RUNNING=$(docker inspect --format="{{.State.Running}}" $CONTAINER 2> /dev/null)
+RUNNING=$(docker inspect --format="{{.State.Running}}" "$CONTAINER" 2> /dev/null)
 
 if [ $? -eq 1 ]; then
   echo "🛑 3 - UNKNOWN"
@@ -51,7 +52,7 @@ if [ "$RUNNING" == "false" ]; then
   exit 2
 fi
 
-RESTARTING=$(docker inspect --format="{{.State.Restarting}}" $CONTAINER)
+RESTARTING=$(docker inspect --format="{{.State.Restarting}}" "$CONTAINER")
 
 if [ "$RESTARTING" == "true" ]; then
   echo "1 - WARNING" 
@@ -59,8 +60,8 @@ if [ "$RESTARTING" == "true" ]; then
   exit 1
 fi
 
-STARTED=$(docker inspect --format="{{.State.StartedAt}}" $CONTAINER)
-NETWORK=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" $CONTAINER)
+STARTED=$(docker inspect --format="{{.State.StartedAt}}" "$CONTAINER")
+NETWORK=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" "$CONTAINER")
 
 echo "🟢 0 - RUNNING OK"
 echo "🟢 $CONTAINER is running."
