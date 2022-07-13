@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/paulAlexSerban/tpl--traefik-proxy/compare/v1.0.0...v1.1.0) (2022-07-12)
+
+
+### Bug Fixes
+
+* **scripts:** typo in scripts calling ([be4aa15](https://github.com/paulAlexSerban/tpl--traefik-proxy/commit/be4aa15d316ef8645e222ee1a219a0a732da2a30))
+* **yaml-lint:** fix yaml lint issue ([5878a38](https://github.com/paulAlexSerban/tpl--traefik-proxy/commit/5878a3819bfa1ac2cb981534f39602d0dcffd8df))
+* **yaml-lint:** fix yaml lint issues ([93842ea](https://github.com/paulAlexSerban/tpl--traefik-proxy/commit/93842ea4c32833efb97a49dc56ec48ef68bb0a9a))
+
+
+### Features
+
+* **build:** refactoring build scripts ([608d8b6](https://github.com/paulAlexSerban/tpl--traefik-proxy/commit/608d8b6dbc3390ce3e989efa91113be05cc51e09))
+* **traefik:** implemented basic observability and added some documentation ([7bdbd17](https://github.com/paulAlexSerban/tpl--traefik-proxy/commit/7bdbd17f7734fa281c336542e59b3cb1c3abe2ac))
+
 # 1.0.0 (2022-07-07)
 
 
