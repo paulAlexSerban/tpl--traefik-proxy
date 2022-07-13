@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/paulAlexSerban/tpl--traefik-proxy/compare/v1.1.0...v1.2.0) (2022-07-13)
+
+
+### Bug Fixes
+
+* **shellcheck:** shellcheck linter error ([9c547ba](https://github.com/paulAlexSerban/tpl--traefik-proxy/commit/9c547ba3a70bf45f526c965557c721b9584cbee5))
+
+
+### Features
+
+* **codeql:** implement codeql ([3617ed8](https://github.com/paulAlexSerban/tpl--traefik-proxy/commit/3617ed8080755800c74438bac52288facd3e6bb7))
+
 # [1.1.0](https://github.com/paulAlexSerban/tpl--traefik-proxy/compare/v1.0.0...v1.1.0) (2022-07-12)
 
 
