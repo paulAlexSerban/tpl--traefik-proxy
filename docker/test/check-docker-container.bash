@@ -32,6 +32,7 @@ if [ "$(which docker)" == "" ]; then
 fi
 
 docker info > /dev/null 2>&1
+# shellcheck disable=SC2181
 if [ $? -ne 0 ]; then
   echo "🛑 3 - UNKNOWN" 
   echo "🛑 Unable to talk to the docker daemon"
