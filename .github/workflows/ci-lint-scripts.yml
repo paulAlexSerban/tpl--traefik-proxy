@@ -1,5 +1,5 @@
 ---
-name: Lint
+name: Lint Scripts
 on:
   push:
     branches-ignore:
@@ -9,8 +9,8 @@ on:
   workflow_call:
 
 jobs:
-  lint-yaml:
-    name: Lint Yaml
+  lint:
+    name: Lint Scripts
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ Checkout repository"
@@ -26,8 +26,26 @@ jobs:
               *.yml
               **/*.yml
 
-      - name: "🔍 Lint"
+      - name: "🔍  Verify Changed .bash or .sh files"
+        uses: tj-actions/changed-files@v23.1
+        id: changed-bash-files
+        with:
+          files: |
+              *.bash
+              *.sh
+              **/*.bash
+              **/*.sh
+
+      - name: "🔍 Lint Yaml"
         if: steps.changed-yaml-files.outputs.any_changed == 'true'
         uses: ibiqlik/action-yamllint@v3
         with:
           file_or_dir: ./**/*.yml
+      
+      - name: Lint Bash Script with ShellCheck
+        if: steps.changed-bash-files.outputs.any_changed == 'true'
+        uses: azohra/shell-linter@latest
+        with:
+          path: |
+            ./**/*.bash
+            ./**/*.sh
